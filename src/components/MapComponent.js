@@ -12,7 +12,7 @@ import VectorSource from "ol/source/Vector";
 import VectorLayer from "ol/layer/Vector";
 import Form from "./forms/Form";
 import { toLonLat } from "ol/proj";
-import { convertDMStoDD, convertDDtoDMS } from "@/utils/convert";
+import { convertDMStoDD, convertDDtoDMS } from "../utils/convert";
 
 const MapComponent = () => {
   /**

@@ -7,7 +7,7 @@ export default function DDtoDMSForm({ coordinates, setCoordinates }) {
         <label className="font-bold">Latitude</label>
         <input
           type="text"
-          placeholder="90.000000"
+          placeholder="90.00000"
           value={coordinates.latitude}
           className="p-2 w-full border border-gray-300 rounded"
           onChange={(e) =>
@@ -19,7 +19,7 @@ export default function DDtoDMSForm({ coordinates, setCoordinates }) {
         <label className="font-bold">Longitude</label>
         <input
           type="text"
-          placeholder="33.230000"
+          placeholder="33.23000"
           value={coordinates.longitude}
           className="p-2 w-full border border-gray-300 rounded"
           onChange={(e) =>
