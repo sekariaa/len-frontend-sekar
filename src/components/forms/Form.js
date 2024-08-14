@@ -11,6 +11,8 @@ export default function Form({
   convertedResult,
   toggleMarkerDisplay,
 }) {
+  const isCoordinatesEmpty =
+    !coordinates || !coordinates.latitude || !coordinates.longitude;
   return (
     <div className="p-8 bg-gray-100 border-2 border-gray-300 rounded-lg shadow-lg absolute top-1/2 right-1/2 transform translate-x-1/2 -translate-y-1/2 w-80 z-50 text-gray-800">
       <select
@@ -33,8 +35,13 @@ export default function Form({
         />
       )}
       <button
+        disabled={isCoordinatesEmpty}
         onClick={handleConvert}
-        className="bg-green-600 text-white p-2 rounded w-full mt-4 transition-colors duration-300 hover:bg-green-700"
+        className={`bg-green-600 text-white p-2 rounded w-full mt-4 transition-colors duration-300 ${
+          isCoordinatesEmpty
+            ? "bg-green-400 cursor-not-allowed"
+            : "hover:bg-green-700"
+        }`}
       >
         Konversi
       </button>
@@ -50,8 +57,13 @@ export default function Form({
         </div>
       )}
       <button
+        disabled={isCoordinatesEmpty}
         onClick={toggleMarkerDisplay}
-        className="bg-blue-600 text-white p-2 rounded w-full mt-4 transition-colors duration-300 hover:bg-blue-700"
+        className={`bg-blue-600 text-white p-2 rounded w-full mt-4 transition-colors duration-300 ${
+          isCoordinatesEmpty
+            ? "bg-blue-400 cursor-not-allowed"
+            : "hover:bg-blue-700"
+        }`}
       >
         Tambahkan ke Maps
       </button>
