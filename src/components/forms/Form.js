@@ -1,6 +1,5 @@
 import React from "react";
-import DMStoDDForm from "./DMStoDDForm";
-import DDtoDMSForm from "./DDtoDMSForm";
+import InputForm from "./InputForm";
 
 export default function Form({
   conversionType,
@@ -23,17 +22,11 @@ export default function Form({
         <option value="DMS">DMS to DD</option>
         <option value="DD">DD to DMS</option>
       </select>
-      {conversionType === "DMS" ? (
-        <DMStoDDForm
-          coordinates={coordinates}
-          setCoordinates={setCoordinates}
-        />
-      ) : (
-        <DDtoDMSForm
-          coordinates={coordinates}
-          setCoordinates={setCoordinates}
-        />
-      )}
+      <InputForm
+        coordinates={coordinates}
+        setCoordinates={setCoordinates}
+        format={conversionType}
+      ></InputForm>
       <button
         disabled={isCoordinatesEmpty}
         onClick={handleConvert}

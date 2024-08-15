@@ -13,11 +13,16 @@ function convertDMStoDD({ latitude, longitude }) {
 
     // Mengekstrak derajat, menit, detik, dan arah dari hasil pencocokan regex
     const degrees = parseFloat(match[1]);
+    console.log("degrees=", degrees);
     const minutes = parseFloat(match[2]);
+    console.log("minutes=", minutes);
     const seconds = parseFloat(match[3]);
+    console.log("seconds=", seconds);
     const direction = match[4];
+    console.log("direction=", direction);
     // Menghitung derajat desimal
     let decimalDegrees = degrees + minutes / 60 + seconds / 3600;
+    console.log("decimal degrees=", decimalDegrees);
     // Menyesuaikan arah jika perlu (S atau W)
     if (direction === "S" || direction === "W") {
       decimalDegrees *= -1;
@@ -43,8 +48,11 @@ function convertDMStoDD({ latitude, longitude }) {
 function convertDDtoDMS({ longitude, latitude }) {
   const convert = (coord) => {
     const degrees = Math.floor(coord);
+    console.log("degrees=", degrees);
     const minutes = Math.floor((coord - degrees) * 60);
+    console.log("minutes=", minutes);
     const seconds = ((coord - degrees - minutes / 60) * 3600).toFixed(2);
+    console.log("seconds=", seconds);
     return { degrees, minutes, seconds };
   };
 

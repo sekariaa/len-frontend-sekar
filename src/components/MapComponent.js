@@ -16,6 +16,7 @@ import { convertDMStoDD, convertDDtoDMS } from "../utils/convert";
 
 const MapComponent = () => {
   /**
+   * 1. Inisialisasi state
    * Map: State untuk menyimpan instansi peta
    * showForm: State untuk mengontrol tampilan formulir konversi
    * coordinates: State untuk menyimpan koordinat yang dipilih
@@ -32,7 +33,7 @@ const MapComponent = () => {
   const [convertedResult, setConvertedResult] = useState("");
 
   /**
-   * Menginisialisasi peta ketika komponen pertama kali dimuat
+   * 2. Menginisialisasi peta ketika komponen pertama kali dimuat
    */
   useEffect(() => {
     const mapElement = document.getElementById("map");
@@ -43,13 +44,6 @@ const MapComponent = () => {
 
     initializeMap();
   });
-
-  /**
-   * Menghapus hasil konversi saat jenis konversi berubah
-   */
-  useEffect(() => {
-    setConvertedResult("");
-  }, [conversionType]);
 
   /**
    * Menginisialisasi peta OpenLayers dan menyiapkan event listener
@@ -66,7 +60,7 @@ const MapComponent = () => {
           maxZoom: 7,
         }),
       });
-      // Menambahkan event listener klik untuk menangani klik pada peta
+      // 3. Menambahkan event listener klik untuk menangani klik pada peta
       mapInstance.on("click", (event) => {
         setConversionType("DD");
         const coordinate = toLonLat(event.coordinate);
@@ -77,7 +71,7 @@ const MapComponent = () => {
   };
 
   /**
-   * Menangani klik pada koordinat peta untuk menyetel koordinat dan menampilkan formulir.
+   * 4. Menangani klik pada koordinat peta untuk menyetel koordinat dan menampilkan formulir.
    */
   const handleCoordinateClick = useCallback((coordinate) => {
     setCoordinates({
@@ -88,12 +82,12 @@ const MapComponent = () => {
   }, []);
 
   /**
-   * Membuka atau menutup formulir konversi
+   * 5. Membuka atau menutup formulir konversi
    */
   const openFormPopup = () => setShowForm((prev) => !prev);
 
   /**
-   * Mengonversi koordinat berdasarkan jenis konversi yang berlaku saat ini
+   * 6. Mengonversi koordinat berdasarkan jenis konversi yang berlaku saat ini
    */
   const handleConvert = () => {
     const result =
@@ -104,7 +98,7 @@ const MapComponent = () => {
   };
 
   /**
-   * Menambahkan marker ke peta pada koordinat yang ditentukan.
+   * 7. Menambahkan marker ke peta pada koordinat yang ditentukan.
    */
   const addMarkerToMap = () => {
     removeExistingMarkers();
@@ -115,6 +109,15 @@ const MapComponent = () => {
     map.addLayer(vectorLayer);
     map.getView().setCenter(marker.getGeometry().getCoordinates());
     map.getView().setZoom(12);
+  };
+
+  /**
+   * Menghapus semua layer marker yang ada di peta.
+   */
+  const removeExistingMarkers = () => {
+    map.getLayers().forEach((layer) => {
+      if (layer instanceof VectorLayer) map.removeLayer(layer);
+    });
   };
 
   /**
@@ -129,24 +132,15 @@ const MapComponent = () => {
         ])
       ),
     });
-
-    markerFeature.on("click", () => {
-      handleCoordinateClick(
-        toLonLat(markerFeature.getGeometry().getCoordinates())
-      );
-    });
-
     return markerFeature;
   };
 
   /**
-   * Menghapus semua layer marker yang ada di peta.
+   * 8. Menghapus hasil konversi saat jenis konversi berubah
    */
-  const removeExistingMarkers = () => {
-    map.getLayers().forEach((layer) => {
-      if (layer instanceof VectorLayer) map.removeLayer(layer);
-    });
-  };
+  useEffect(() => {
+    setConvertedResult("");
+  }, [conversionType]);
 
   return (
     <div className="relative h-screen">
