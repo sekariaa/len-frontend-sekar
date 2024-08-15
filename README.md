@@ -1,36 +1,39 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## Deployment
+Jika Anda tidak melakukan instalasi, Anda dapat mengakses hasil pengerjaan proyek ini melalui: [len-frontend-sekar.vercel.app](https://len-frontend-sekar.vercel.app/)
+ 
+## Instalasi
 
-## Getting Started
+1. **Clone Repository**
 
-First, run the development server:
+   Pertama, clone repository ini ke mesin lokal Anda:
+   ```bash
+   git clone [https://github.com/username/proyek-konversi-koordinat.git](https://github.com/sekariaa/len-frontend-sekar.git)
+   cd len-frontend-sekar
+   ```
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+2. **Install Dependencies**
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+   Pastikan Anda memiliki [Node.js](https://nodejs.org/) terinstal. Kemudian, install dependencies dengan menjalankan:
+   ```bash
+   npm install
+   ```
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+3. **Menjalankan Aplikasi**
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+   Setelah dependencies terinstal, jalankan aplikasi dengan perintah berikut:
+   ```bash
+   npm run dev
+   ```
+   Aplikasi akan berjalan di [http://localhost:3000](http://localhost:3000).
 
-## Learn More
+4. **Menjalankan Testing**
 
-To learn more about Next.js, take a look at the following resources:
+   Untuk menjalankan tes unit, gunakan:
+   ```bash
+   npm test
+   ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Fitur
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- **Konversi Koordinat**: Mengkonversi antara format DMS dan DD atau sebaliknya melalui input manual atau mendapatkan koordinat secara langsung melalui maps.
+- **Peta Interaktif**: Menggunakan OpenLayers untuk menampilkan peta dan menambahkan marker.
